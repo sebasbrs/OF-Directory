@@ -1,7 +1,17 @@
-export default function Home() {
+import { getTopModels } from "@/lib/api";
+import ModelCard from "@/components/ModelCard";
+
+export default async function Home() {
+  const models = await getTopModels();
+
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-900 text-white">
-      <h1 className="text-4xl font-bold">¡TailwindCSS está funcionando! 🚀</h1>
+    <div>
+      <h2 className="text-2xl font-bold my-4">Modelos Populares</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {models.map((model) => (
+          <ModelCard key={model.username} model={model} />
+        ))}
+      </div>
     </div>
   );
 }
