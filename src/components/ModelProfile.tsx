@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getModelProfile, getModelPosts } from "@/lib/api";
+import { getModelProfile } from "@/lib/api";
 
 
 export default function ModelProfile({ model, username }: { model: any, username: string }) {
@@ -18,7 +18,7 @@ export default function ModelProfile({ model, username }: { model: any, username
       fetchData();
     }, [username]);
   
-    if (!profile) return <p className="text-center text-gray-500">Cargando perfil...</p>;
+    if (!profile) return <p className="text-center text-gray-500">Loading Profile...</p>;
     return (
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
       {/* 🔹 Header con banner y foto de perfil */}
@@ -43,10 +43,7 @@ export default function ModelProfile({ model, username }: { model: any, username
       <div className="text-center mt-12 p-4">
         <h2 className="text-2xl font-bold">{profile.name}</h2>
         <p className="text-gray-500">@{profile.username}</p>
-        <p className="mt-2 text-sm text-gray-700">{profile.about}</p>
-        <p className="mt-3 text-lg font-semibold text-blue-600">
-          {profile.subscribePrice ? `$${profile.subscribePrice}/mes` : "Gratis"}
-        </p>
+        <p className="mt-2 text-sm text-gray-700"  dangerouslySetInnerHTML={{ __html: profile.about }}></p>
         <a
           href={`https://onlyfans.com/${profile.username}`}
           target="_blank"
@@ -54,6 +51,26 @@ export default function ModelProfile({ model, username }: { model: any, username
         >
           Suscribirse
         </a>
+      </div>
+      <div className="border-t border-gray-200 mt-4">
+        <div className="flex justify-between p-4">
+          <div className="text-center">
+            <p className="text-gray-500">Posts</p>
+            <p className="font-bold">{profile.postsCount}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-500">Photos</p>
+            <p className="font-bold">{profile.photosCount}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-500">Videos</p>
+            <p className="font-bold">{profile.videosCount}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-500">Audios</p>
+            <p className="font-bold">{profile.audiosCount}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

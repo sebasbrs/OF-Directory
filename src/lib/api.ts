@@ -1,6 +1,6 @@
-export async function getTopModels() {
+export async function getTopModels(page: number) {
     try {
-      const res = await fetch("https://onlyfans-api5.p.rapidapi.com/catalog/2/publish_date_desc", {
+      const res = await fetch(`https://onlyfans-api5.p.rapidapi.com/catalog/${page}/publish_date_desc` , {
         method: 'GET',
         headers: {
           "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY!,
