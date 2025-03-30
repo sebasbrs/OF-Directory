@@ -4,7 +4,7 @@ export default function ModelCard({ model }) {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
       <img
-        src={model.profile_picture}
+        src={model.avatar}
         alt={model.name}
         className="w-full h-40 object-cover"
       />
@@ -12,7 +12,7 @@ export default function ModelCard({ model }) {
         <h3 className="text-lg font-bold">{model.name}</h3>
         <p className="text-gray-500">@{model.username}</p>
         <p className="text-sm text-blue-600 font-semibold mt-2">
-          {model.subscription_price ? `$${model.subscription_price}/mes` : "Gratis"}
+          {model.subscribePrice ? `$${model.subscribePrice}/mes` : "Gratis"}
         </p>
         <Link
           href={`/models/${model.username}`}

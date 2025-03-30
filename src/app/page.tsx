@@ -2,7 +2,8 @@ import { getTopModels } from "@/lib/api";
 import ModelCard from "@/components/ModelCard";
 
 export default async function Home() {
-  const models = await getTopModels();
+  const data = await getTopModels();
+  const models = data.items || [];
 
   return (
     <div>
