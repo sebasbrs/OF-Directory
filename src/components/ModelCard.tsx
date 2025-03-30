@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-export default function ModelCard({ model }) {
+interface Model {
+  avatar: string;
+  name: string;
+  username: string;
+}
+
+export default function ModelCard({ model }: { model: Model }) {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
       <img
