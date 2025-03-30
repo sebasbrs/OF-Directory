@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getTopModels } from "@/lib/api";
 import ModelCard from "./ModelCard";
 

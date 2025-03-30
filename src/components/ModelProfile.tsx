@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getModelProfile } from "@/lib/api";
 
 
-export default function ModelProfile({ model, username }: { model: any, username: string }) {
+export default function ModelProfile({ username }: { model: any, username: string }) {
  
     const [profile, setProfile] = useState<any>(null);
   
