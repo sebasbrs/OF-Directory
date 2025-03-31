@@ -1,20 +1,19 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
-
-type Props = Promise<{ params: {
+interface PageProps {
+  params: {
     username: string;
   };
-}>;
+}
 
 // 🔹 Generar Metadata Dinámica para SEO
-export async function generateMetadata(props: { params: Props }) {
-  const { params } = await props.params;
+export async function generateMetadata({ params }: PageProps) {
   const profile = await getModelProfile(params.username);
 
   if (!profile) {
     return {
       title: "Profile not found - OnlyFans Directory",
-      description: "This profile doesn't exists in OnlyFans.",
+      description: "This profile doesn't exist in OnlyFans Directory.",
     };
   }
 
@@ -30,8 +29,8 @@ export async function generateMetadata(props: { params: Props }) {
 }
 
 // 🔹 Página del Modelo
-export default async function ModelPage(props: { params: Props }) {
-  const { params } = await props.params;
+export default async function ModelPage({ params }: PageProps) {
+  console.log("params", params.username);
   const model = await getModelProfile(params.username);
 
   if (!model) {
