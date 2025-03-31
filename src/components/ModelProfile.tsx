@@ -16,8 +16,7 @@ export default function ModelProfile({ username }: { model: any, username: strin
       }
   
       fetchData();
-    }, [username]);
-  
+    }, [username]);  
     if (!profile) return <p className="text-center text-gray-500">Loading Profile...</p>;
     return (
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
@@ -70,6 +69,8 @@ export default function ModelProfile({ username }: { model: any, username: strin
             <p className="text-gray-500">Audios</p>
             <p className="font-bold">{profile.audiosCount}</p>
           </div>
+        </div>
+        <div className="border-t border-gray-200 mt-4">
         </div>
       </div>
     </div>

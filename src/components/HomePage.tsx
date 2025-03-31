@@ -14,16 +14,6 @@ export default function HomePage({ initialModels }: { initialModels: any[] }) {
     model.name.toLowerCase().includes(search.toLowerCase()) ||
     model.username.toLowerCase().includes(search.toLowerCase())
     );
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "/js/ads.js"; // Ruta dentro de `public/`
-    script.async = true;
-    document.body.appendChild(script);
-    
-    return () => {
-      document.body.removeChild(script); // Limpieza al desmontar
-    };
-  }, []);
 
   async function loadMore() {
     setLoading(true);
