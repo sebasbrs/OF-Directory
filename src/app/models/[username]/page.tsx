@@ -1,14 +1,14 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
 
-interface Props {
-  params: {
+type Props = Promise<{ params: {
     username: string;
   };
-}
+}>;
 
 // 🔹 Generar Metadata Dinámica para SEO
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: { params: Props }) {
+  const { params } = await props.params;
   const profile = await getModelProfile(params.username);
 
   if (!profile) {
@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 // 🔹 Página del Modelo
-export default async function ModelPage({ params }: Props) {
+export default async function ModelPage(props: { params: Props }) {
+  const { params } = await props.params;
   const model = await getModelProfile(params.username);
 
   if (!model) {
