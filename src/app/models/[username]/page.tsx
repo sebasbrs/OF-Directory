@@ -1,7 +1,7 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
 
-interface PageProps {
+interface Props {
   params: {
     username: string;
   };
@@ -22,7 +22,11 @@ export async function generateMetadata({ params }: { params: { username: string 
   };
 }
 
-export default async function ModelPage({ params }: PageProps) {
+export default async function ModelPage({ params }: Props) {
+  if (!params?.username) {
+    return <p className="text-center text-gray-500">No se encontró el perfil.</p>;
+  }
+
   const model = await getModelProfile(params.username);
 
   if (!model) {
