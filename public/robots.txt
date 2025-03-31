@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://of-directory.vercel.app/api/sitemap

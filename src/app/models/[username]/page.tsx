@@ -1,27 +1,26 @@
-"use client";
 import { getModelProfile } from "@/lib/api";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import ModelProfile from "@/components/ModelProfile";
 
-export default function ModelPage() {
-  const params = useParams();
-  const [model, setModel] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+export async function generateMetadata({ params }: { params: { username: string } }) {
+  const profile = await getModelProfile(params.username);
 
-  useEffect(() => {
-    if (params?.username) {
-      getModelProfile(Array.isArray(params.username) ? params.username[0] : params.username)
-        .then((data) => {
-          setModel(data);
-        })
-        .finally(() => setLoading(false));
-    }
-  }, [params?.username]);
-  if (loading) return <p className="text-center">Cargando...</p>;
-  if (!model) return <p className="text-center text-gray-500">No se encontró el perfil.</p>;
+  return {
+    title: `${profile.username} - OnlyFans Directory`,
+    description: `${profile.name}'s profile in OnlyFans. ${profile.about}`,
+    openGraph: {
+      title: `${profile.name} - OnlyFans Directory`,
+      description: profile.about,
+      images: [profile.avatar],
+    },
+  };
+}
 
-  return (
-    <ModelProfile model={model} username={Array.isArray(params.username) ? params.username[0] : params.username || ""} />
-  );
+export default async function ModelPage({ params }: { params: { username: string } }) {
+  const model = await getModelProfile(params.username);
+
+  if (!model) {
+    return <p className="text-center text-gray-500">No se encontró el perfil.</p>;
+  }
+
+  return <ModelProfile model={model} />;
 }

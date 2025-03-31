@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>Only Fans Directory</title>
+        <title>OnlyFans Models Directory</title>
         <meta name="juicyads-site-verification" content="04321ba5bf22611c2b9d166f5d0059a2" />
         <link rel="shortcut icon" href="/images/favicon.png" />
         <script type="text/javascript" src="https://js.juicyads.com/jp.php?c=44542313t214u4r2o2c4z2d484&u=http%3A%2F%2Fwww.juicyads.rocks"></script>
