@@ -7,9 +7,16 @@ interface Props {
   };
 }
 
-
-export async function generateMetadata({ params }: { params: { username: string } }) {
+// 🔹 Generar Metadata Dinámica para SEO
+export async function generateMetadata({ params }: Props) {
   const profile = await getModelProfile(params.username);
+
+  if (!profile) {
+    return {
+      title: "Profile not found - OnlyFans Directory",
+      description: "This profile doesn't exists in OnlyFans.",
+    };
+  }
 
   return {
     title: `${profile.username} - OnlyFans Directory`,
@@ -17,20 +24,17 @@ export async function generateMetadata({ params }: { params: { username: string 
     openGraph: {
       title: `${profile.name} - OnlyFans Directory`,
       description: profile.about,
-      images: [profile.avatar],
+      images: [{ url: profile.avatar }],
     },
   };
 }
 
+// 🔹 Página del Modelo
 export default async function ModelPage({ params }: Props) {
-  if (!params?.username) {
-    return <p className="text-center text-gray-500">No se encontró el perfil.</p>;
-  }
-
   const model = await getModelProfile(params.username);
 
   if (!model) {
-    return <p className="text-center text-gray-500">No se encontró el perfil.</p>;
+    return <p className="text-center text-gray-500">Profile not found</p>;
   }
 
   return <ModelProfile model={model} />;
