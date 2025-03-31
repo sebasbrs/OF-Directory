@@ -1,16 +1,18 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
+import { Metadata } from 'next';
 
-// ✅ Definimos manualmente el tipo de los props
-interface PageProps {
+// Definición correcta para páginas del App Router
+type Props = {
   params: {
     username: string;
   };
-}
+  searchParams: Record<string, string | string[] | undefined>;
+};
 
-// 🔹 Generar Metadata Dinámica para SEO
-export async function generateMetadata({ params }: PageProps) {
-  const { username } = params; // ✅ Ahora TypeScript reconoce `username` correctamente
+// Generar Metadata Dinámica para SEO
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { username } = params;
 
   const profile = await getModelProfile(username);
 
@@ -32,9 +34,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-// 🔹 Página del Modelo
-export default async function ModelPage({ params }: PageProps) {
-  const { username } = params; // ✅ No es una promesa, solo un objeto normal
+// Página del Modelo
+export default async function ModelPage({ params }: Props) {
+  const { username } = params;
 
   console.log("params", username);
   const model = await getModelProfile(username);
