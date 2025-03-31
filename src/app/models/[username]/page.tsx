@@ -4,7 +4,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ModelProfile from "@/components/ModelProfile";
 
-
 export default function ModelPage() {
   const params = useParams();
   const [model, setModel] = useState<any>(null);

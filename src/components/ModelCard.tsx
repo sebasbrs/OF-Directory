@@ -21,7 +21,7 @@ export default function ModelCard({ model }: { model: Model }) {
           href={`/models/${model.username}`}
           className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600"
         >
-          See More
+          CHECK MORE
         </Link>
       </div>
     </div>

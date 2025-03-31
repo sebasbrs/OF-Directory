@@ -48,7 +48,7 @@ export default function ModelProfile({ username }: { model: any, username: strin
           target="_blank"
           className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600"
         >
-          Suscribirse
+          GET HER CONTENT NOW
         </a>
       </div>
       <div className="border-t border-gray-200 mt-4">
@@ -69,8 +69,6 @@ export default function ModelProfile({ username }: { model: any, username: strin
             <p className="text-gray-500">Audios</p>
             <p className="font-bold">{profile.audiosCount}</p>
           </div>
-        </div>
-        <div className="border-t border-gray-200 mt-4">
         </div>
       </div>
     </div>
