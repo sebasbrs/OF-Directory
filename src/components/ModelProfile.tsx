@@ -31,8 +31,8 @@ export default function ModelProfile({ username }: { model: any, username: strin
           <Image
             src={profile.avatar}
             alt={profile.name}
-            width={200}
-            height={200}
+            width={110}
+            height={110}
             className="rounded-full border-4 border-white shadow-lg"
           />
         </div>
