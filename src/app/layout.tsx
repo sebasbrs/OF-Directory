@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AdsScript from "@/components/AdsScript";
 import { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
