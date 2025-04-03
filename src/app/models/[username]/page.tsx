@@ -1,18 +1,24 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-// Definición correcta para páginas del App Router
-type Props = {
+// ✅ Definimos manualmente el tipo correcto sin `Promise<>`
+interface PageProps {
   params: {
     username: string;
   };
-  searchParams: Record<string, string | string[] | undefined>;
-};
+}
 
-// Generar Metadata Dinámica para SEO
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// 🔹 Generar Metadata Dinámica para SEO
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { username } = params;
+
+  if (!username) {
+    return {
+      title: "Profile not found - OnlyFans Directory",
+      description: "This profile doesn't exist in OnlyFans Directory.",
+    };
+  }
 
   const profile = await getModelProfile(username);
 
@@ -34,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Página del Modelo
-export default async function ModelPage({ params }: Props) {
+// 🔹 Página del Modelo
+export default async function ModelPage({ params }: PageProps) {
   const { username } = params;
 
   console.log("params", username);
