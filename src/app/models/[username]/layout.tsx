@@ -4,6 +4,7 @@ export default function ModelLayout({ children }: { children: React.ReactNode })
         <br/>
         {children}
       </div>
+
     );
   }
   
