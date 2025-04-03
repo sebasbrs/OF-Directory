@@ -6,7 +6,7 @@ export async function getTopModels(page: number) {
           "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY!,
           "x-rapidapi-host": process.env.NEXT_PUBLIC_RAPIDAPI_HOST!,
         },
-        
+        cache: 'no-store'
       });
       if (!res.ok) throw new Error("Error al obtener modelos");
       return await res.json();
