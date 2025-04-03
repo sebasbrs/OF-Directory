@@ -3,15 +3,11 @@ import ModelProfile from "@/components/ModelProfile";
 import { Metadata } from "next";
 
 // ✅ Definimos manualmente el tipo correcto sin `Promise<>`
-interface PageProps {
-  params: {
-    username: string;
-  };
-}
+type Params = Promise<{ username: string}>
 
 // 🔹 Generar Metadata Dinámica para SEO
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { username } = params;
+export async function generateMetadata({ params }: {params: Params}){
+  const { username } = await params;
 
   if (!username) {
     return {
@@ -41,10 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // 🔹 Página del Modelo
-export default async function ModelPage({ params }: PageProps) {
-  const { username } = params;
+export default async function ModelPage({ params }: {params: Params}) {
+  const { username } = await params;
 
-  console.log("params", username);
   const model = await getModelProfile(username);
 
   if (!model) {
