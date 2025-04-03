@@ -1,6 +1,8 @@
 import { getTopModels } from "@/lib/api";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic"; 
+
 export async function GET() {
   const models = await getTopModels(1); // Llamada a la API en runtime
 
