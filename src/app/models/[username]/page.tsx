@@ -1,6 +1,5 @@
 import { getModelProfile } from "@/lib/api";
 import ModelProfile from "@/components/ModelProfile";
-import { Metadata } from "next";
 
 // ✅ Definimos manualmente el tipo correcto sin `Promise<>`
 type Params = Promise<{ username: string}>
