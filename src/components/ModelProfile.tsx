@@ -45,6 +45,7 @@ export default function ModelProfile({ model}: { model: any }) {
           href={`https://onlyfans.com/${model.username}`}
           target="_blank"
           className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600"
+          data-linkvertise-target
         >
           GET HER CONTENT NOW
         </a>

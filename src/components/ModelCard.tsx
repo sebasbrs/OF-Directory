@@ -20,6 +20,7 @@ export default function ModelCard({ model }: { model: Model }) {
         <Link
           href={`/models/${model.username}`}
           className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600"
+          data-linkvertise-target
         >
           CHECK MORE
         </Link>
