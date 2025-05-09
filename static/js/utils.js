@@ -27,5 +27,8 @@ var navig = {
         window.location.href = "./?id=" + nextId;
         
     },
+    back: function() {
+        window.history.back();
+    }
 
 }
